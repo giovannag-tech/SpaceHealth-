@@ -1,73 +1,155 @@
+# FIAP - Faculdade de Informática e Administração Paulista
+
 # SpaceHealth
+## Sistema Inteligente de Previsão de Risco de Dengue
 
-## Integrantes
+### 👩‍🎓 Integrante
 
-Giovanna Gomes Oliveira
+- RM567169 - Giovanna Gomes Oliveira
 
-## Descrição
+---
 
-O SpaceHealth é uma plataforma de monitoramento epidemiológico que utiliza Inteligência Artificial para prever riscos de dengue com base em dados climáticos.
+## 📝 Descrição
 
-A solução utiliza informações de temperatura, umidade e chuva obtidas através de APIs meteorológicas, armazenadas em banco de dados PostgreSQL e analisadas por um modelo de Machine Learning.
+O SpaceHealth é uma solução desenvolvida para auxiliar na previsão de risco de dengue utilizando dados climáticos coletados através da API OpenWeather.
 
-## Objetivo
+O sistema integra Inteligência Artificial, Machine Learning, Banco de Dados PostgreSQL e uma interface web para análise dos dados.
 
-Auxiliar órgãos públicos e profissionais da saúde na identificação antecipada de regiões com maior probabilidade de ocorrência de dengue.
+A proposta utiliza informações de temperatura, umidade e precipitação para identificar padrões associados ao aumento do risco de dengue em cidades brasileiras.
 
-## Tecnologias Utilizadas
+---
+
+## 🚀 Tecnologias Utilizadas
 
 - Python
 - PostgreSQL
-- pgAdmin 4
+- Machine Learning (Scikit-Learn)
+- OpenWeather API
+- HTML5
+- CSS3
+- GitHub
 - Power BI
-- Pandas
-- Scikit-Learn
-- API OpenWeather
-- Machine Learning
 
-## Arquitetura da Solução
+---
 
-1. Coleta de dados climáticos através da API OpenWeather.
-2. Armazenamento dos dados no PostgreSQL.
-3. Processamento dos dados utilizando Python.
-4. Treinamento do modelo Random Forest.
-5. Geração de previsões de risco.
-6. Visualização dos resultados no Power BI.
+## 📂 Estrutura do Projeto
 
-## Machine Learning
+```text
+SpaceHealth/
+│
+├── buscar_clima.py
+├── conexao.py
+├── inserir_cidade.py
+├── prever_banco.py
+├── treinar_modelo.py
+├── index.html
+├── README.md
+└── docs/
+```
 
-Foi utilizado o algoritmo Random Forest para classificação do risco de dengue em:
+---
 
-- Baixo
-- Médio
-- Alto
+## ⚙️ Funcionalidades
 
-Variáveis utilizadas:
+- Cadastro de cidades
+- Coleta automática de dados climáticos
+- Armazenamento em PostgreSQL
+- Treinamento do modelo de Machine Learning
+- Previsão de risco de dengue
+- Dashboard analítico
+- Interface Web em HTML
+
+---
+
+## 🖥️ Interface Web
+
+A aplicação possui uma interface HTML desenvolvida para apresentação da solução.
+
+Recursos disponíveis:
+
+- Descrição do projeto
+- Tecnologias utilizadas
+- Objetivos da solução
+- Apresentação visual do sistema
+
+---
+
+## 📊 Banco de Dados
+
+Banco utilizado:
+
+- PostgreSQL
+
+Tabelas principais:
+
+- cidades
+- clima
+- previsao_dengue
+
+---
+
+## 🤖 Machine Learning
+
+O modelo foi desenvolvido utilizando a biblioteca Scikit-Learn.
+
+Variáveis analisadas:
 
 - Temperatura
 - Umidade
-- Chuva
+- Precipitação
 
-## Resultados
+Objetivo:
 
-O sistema consegue prever automaticamente o nível de risco de dengue a partir de dados climáticos coletados pela API.
+- Identificar padrões climáticos relacionados ao aumento do risco de dengue.
 
-## Evidências
+---
 
-As imagens do projeto estão disponíveis na pasta:
-
-docs/imagens
-
-## Como Executar
+## ▶️ Como Executar
 
 Instalar dependências:
 
+```bash
 pip install pandas scikit-learn psycopg2 requests
+```
 
-Executar:
+Executar coleta climática:
 
+```bash
 python buscar_clima.py
+```
 
+Treinar modelo:
+
+```bash
 python treinar_modelo.py
+```
 
+Gerar previsões:
+
+```bash
 python prever_banco.py
+```
+
+---
+
+## 📈 Resultados Esperados
+
+O sistema permite identificar cidades com maior probabilidade de ocorrência de dengue através da análise de dados climáticos.
+
+A solução pode auxiliar órgãos públicos e profissionais da saúde na tomada de decisões preventivas.
+
+---
+
+## 🎯 Conclusão
+
+O projeto SpaceHealth demonstra a aplicação prática de Inteligência Artificial, Banco de Dados, APIs e Machine Learning para solucionar problemas reais relacionados à saúde pública.
+
+A utilização de dados climáticos possibilita prever cenários de risco e contribuir para ações preventivas contra a dengue.
+
+---
+
+## 🔗 Repositório
+
+Projeto desenvolvido para a Global Solution FIAP 2026.1.
+
+RM567169 - Giovanna Gomes Oliveira
