@@ -1,7 +1,8 @@
 # FIAP - Faculdade de Informática e Administração Paulista
 
 # SpaceHealth
-## Sistema Inteligente de Previsão de Risco de Dengue
+
+## 🔗 Sistema Inteligente de Previsão de Risco de Dengue
 
 ### 👩‍🎓 Integrante
 
@@ -9,7 +10,7 @@
 
 ---
 
-## 📝 Descrição
+## 📖 Descrição
 
 O SpaceHealth é uma solução desenvolvida para auxiliar na previsão de risco de dengue utilizando dados climáticos coletados através da API OpenWeather.
 
@@ -32,11 +33,11 @@ A proposta utiliza informações de temperatura, umidade e precipitação para i
 
 ---
 
-## 📂 Estrutura do Projeto
+## 📁 Estrutura do Projeto
 
 ```text
 SpaceHealth/
-│
+
 ├── buscar_clima.py
 ├── conexao.py
 ├── inserir_cidade.py
@@ -45,6 +46,7 @@ SpaceHealth/
 ├── index.html
 ├── README.md
 └── docs/
+    └── imagens/
 ```
 
 ---
@@ -61,7 +63,43 @@ SpaceHealth/
 
 ---
 
-## 🖥️ Interface Web
+## 🖼️ Evidências do Projeto
+
+### Dashboard Completo
+
+![Dashboard](docs/imagens/1%20-%20Dashboard%20completo.png)
+
+### Modelo de Relacionamentos
+
+![Relacionamentos](docs/imagens/2%20-%20Modelo%20de%20relacionamentos.png)
+
+### Banco de Dados PostgreSQL
+
+![Banco](docs/imagens/3%20-%20Banco%20de%20dados.png)
+
+### Dados das Cidades
+
+![Dados](docs/imagens/4%20-%20dados%20das%20cidades.png)
+
+### Código da API Climática
+
+![API](docs/imagens/5%20-%20codigo%20python%20da%20API.png)
+
+### Código do Modelo de Machine Learning
+
+![Modelo](docs/imagens/6%20-%20codigo%20do%20modelo.png)
+
+### Previsão Executada
+
+![Previsão](docs/imagens/7%20-%20previsao%20executada.png)
+
+### Interface Web HTML
+
+![HTML](docs/imagens/8%20-%20pagina%20html.jpeg)
+
+---
+
+## 💻 Interface Web
 
 A aplicação possui uma interface HTML desenvolvida para apresentação da solução.
 
@@ -74,7 +112,7 @@ Recursos disponíveis:
 
 ---
 
-## 📊 Banco de Dados
+## 🗄️ Banco de Dados
 
 Banco utilizado:
 
@@ -140,6 +178,14 @@ A solução pode auxiliar órgãos públicos e profissionais da saúde na tomada
 
 ---
 
+## 🎥 Vídeo Demonstrativo
+
+Link do vídeo:
+
+COLE_AQUI_O_LINK_DO_VIDEO
+
+---
+
 ## 🎯 Conclusão
 
 O projeto SpaceHealth demonstra a aplicação prática de Inteligência Artificial, Banco de Dados, APIs e Machine Learning para solucionar problemas reais relacionados à saúde pública.
@@ -150,6 +196,6 @@ A utilização de dados climáticos possibilita prever cenários de risco e cont
 
 ## 🔗 Repositório
 
-Projeto desenvolvido para a Global Solution FIAP 2026.1.
+Projeto desenvolvido para a Global Solution FIAP 2026.1
 
 RM567169 - Giovanna Gomes Oliveira
