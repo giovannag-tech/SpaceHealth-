@@ -4,7 +4,7 @@
 
 ## 🔗 Sistema Inteligente de Previsão de Risco de Dengue
 
-### 👩‍🎓 Integrante
+### 👤 Integrante
 
 - RM567169 - Giovanna Gomes Oliveira
 
@@ -63,56 +63,55 @@ SpaceHealth/
 
 ---
 
-## 🖼️ Evidências do Projeto
+## 💻 Interface Web HTML
 
-### Dashboard Completo
-
-![Dashboard](docs/imagens/1%20-%20Dashboard%20completo.png)
-
-### Modelo de Relacionamentos
-
-![Relacionamentos](docs/imagens/2%20-%20Modelo%20de%20relacionamentos.png)
-
-### Banco de Dados PostgreSQL
-
-![Banco](docs/imagens/3%20-%20Banco%20de%20dados.png)
-
-### Dados das Cidades
-
-![Dados](docs/imagens/4%20-%20dados%20das%20cidades.png)
-
-### Código da API Climática
-
-![API](docs/imagens/5%20-%20codigo%20python%20da%20API.png)
-
-### Código do Modelo de Machine Learning
-
-![Modelo](docs/imagens/6%20-%20codigo%20do%20modelo.png)
-
-### Previsão Executada
-
-![Previsão](docs/imagens/7%20-%20previsao%20executada.png)
-
-### Interface Web HTML
-
-![HTML](docs/imagens/8%20-%20pagina%20html.jpeg)
+<img src="docs/imagens/8%20-%20pagina%20html.jpeg" width="900">
 
 ---
 
-## 💻 Interface Web
+## 📊 Dashboard Power BI
 
-A aplicação possui uma interface HTML desenvolvida para apresentação da solução.
+<img src="docs/imagens/1%20-%20Dashboard%20completo.png" width="900">
 
-Recursos disponíveis:
+---
 
-- Descrição do projeto
-- Tecnologias utilizadas
-- Objetivos da solução
-- Apresentação visual do sistema
+## 🔗 Modelo de Relacionamentos
+
+<img src="docs/imagens/2%20-%20Modelo%20de%20relacionamentos.png" width="900">
 
 ---
 
 ## 🗄️ Banco de Dados
+
+<img src="docs/imagens/3%20-%20Banco%20de%20dados.png" width="900">
+
+---
+
+## 📋 Dados das Cidades
+
+<img src="docs/imagens/4%20-%20dados%20das%20cidades.png" width="900">
+
+---
+
+## 🌦️ Código da API Climática
+
+<img src="docs/imagens/5%20-%20codigo%20python%20da%20API.png" width="900">
+
+---
+
+## 🤖 Modelo de Machine Learning
+
+<img src="docs/imagens/6%20-%20codigo%20do%20modelo.png" width="900">
+
+---
+
+## 📈 Previsão Executada
+
+<img src="docs/imagens/7%20-%20previsao%20executada.png" width="900">
+
+---
+
+## 🗃️ Banco de Dados
 
 Banco utilizado:
 
@@ -170,19 +169,21 @@ python prever_banco.py
 
 ---
 
-## 📈 Resultados Esperados
+## 🎥 Vídeo Demonstrativo
+
+Adicionar o link do vídeo após o upload para o YouTube:
+
+```text
+https://youtu.be/SEU-LINK-AQUI
+```
+
+---
+
+## 📊 Resultados Esperados
 
 O sistema permite identificar cidades com maior probabilidade de ocorrência de dengue através da análise de dados climáticos.
 
 A solução pode auxiliar órgãos públicos e profissionais da saúde na tomada de decisões preventivas.
-
----
-
-## 🎥 Vídeo Demonstrativo
-
-Link do vídeo:
-
-COLE_AQUI_O_LINK_DO_VIDEO
 
 ---
 
