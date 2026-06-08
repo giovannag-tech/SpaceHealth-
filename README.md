@@ -14,6 +14,7 @@
 
 - RM567169 - Giovanna Gomes Oliveira
 - RM568044 - Gabriel Coppola
+- RM567250 - Cloves Silva Filho
 
 ## 👩‍🏫 Tutora
 
