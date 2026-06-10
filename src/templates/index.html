@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpaceHealth</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #ffffff;
+    }
+
+    header {
+      background: #111827;
+      padding: 30px;
+      text-align: center;
+      border-bottom: 2px solid #38bdf8;
+    }
+
+    header h1 { color: #38bdf8; font-size: 2rem; margin-bottom: 6px; }
+    header p  { color: #94a3b8; font-size: 0.95rem; }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 30px;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 25px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    h2 { color: #38bdf8; margin-bottom: 14px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+    }
+
+    .info {
+      background: #334155;
+      padding: 18px 12px;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .info h3 { font-size: 0.8rem; color: #94a3b8; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .info p  { font-size: 1.3rem; font-weight: bold; color: #f1f5f9; }
+
+    .info.risco-alto   p { color: #f87171; }
+    .info.risco-medio  p { color: #fbbf24; }
+    .info.risco-baixo  p { color: #34d399; }
+
+    .pipeline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .step {
+      background: #0f172a;
+      border: 1px solid #38bdf8;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      color: #e2e8f0;
+    }
+
+    .arrow { color: #38bdf8; font-size: 1.1rem; }
+
+    label { display: block; margin-bottom: 6px; color: #94a3b8; font-size: 0.9rem; }
+
+    select {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #334155;
+      background: #0f172a;
+      color: #ffffff;
+      width: 100%;
+      margin-bottom: 14px;
+    }
+
+    button {
+      background: #38bdf8;
+      color: #0f172a;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    button:hover { background: #0ea5e9; }
+
+    .tag {
+      display: inline-block;
+      background: #334155;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      margin: 4px;
+      color: #e2e8f0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #111827;
+      margin-top: 10px;
+      color: #64748b;
+      font-size: 0.85rem;
+      border-top: 1px solid #1e293b;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>SpaceHealth</h1>
+    <p>Sistema Inteligente de Previsão de Risco de Dengue</p>
+  </header>
+
+  <div class="container">
+
+    <div class="card">
+      <h2>Sobre o Projeto</h2>
+      <p style="color:#cbd5e1; line-height:1.7;">
+        O SpaceHealth coleta dados climáticos em tempo real via <strong>OpenWeather API</strong> e por meio de
+        um <strong>simulador de sensores ESP32</strong> (DHT22 + pluviômetro), armazenando tudo em um banco
+        <strong>SQLite</strong> local. Um modelo de <strong>Machine Learning (Random Forest)</strong> analisa
+        temperatura e precipitação para classificar o risco de dengue em cidades brasileiras,
+        apoiando ações preventivas de saúde pública.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Pipeline da Solução</h2>
+      <div class="pipeline">
+        <div class="step">🌡️ Sensor ESP32<br><small>DHT22 + Pluviômetro</small></div>
+        <span class="arrow">→</span>
+        <div class="step">🌐 OpenWeather API<br><small>Dados em tempo real</small></div>
+        <span class="arrow">→</span>
+        <div class="step">🗄️ SQLite<br><small>spacehealth.db</small></div>
+        <span class="arrow">→</span>
+        <div class="step">🤖 Random Forest<br><small>Scikit-Learn</small></div>
+        <span class="arrow">→</span>
+        <div class="step">⚠️ Previsão de Risco<br><small>Alto / Médio / Baixo</small></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Tecnologias Utilizadas</h2>
+      <div>
+        <span class="tag">Python</span>
+        <span class="tag">SQLite</span>
+        <span class="tag">Scikit-Learn</span>
+        <span class="tag">OpenWeather API</span>
+        <span class="tag">Random Forest</span>
+        <span class="tag">Streamlit</span>
+        <span class="tag">Plotly</span>
+        <span class="tag">HTML5 / CSS3</span>
+        <span class="tag">GitHub</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Simulação de Previsão</h2>
+
+      <label for="cidade">Selecione uma cidade:</label>
+      <select id="cidade">
+        <option value="sao-paulo">São Paulo</option>
+        <option value="campinas">Campinas</option>
+        <option value="santos">Santos</option>
+        <option value="sorocaba">Sorocaba</option>
+      </select>
+
+      <button onclick="preverRisco()">Prever Risco</button>
+
+      <div class="grid" style="margin-top: 20px;">
+        <div class="info">
+          <h3>Temperatura</h3>
+          <p id="temperatura">--</p>
+        </div>
+        <div class="info">
+          <h3>Precipitação</h3>
+          <p id="chuva">--</p>
+        </div>
+        <div class="info" id="card-risco">
+          <h3>Risco de Dengue</h3>
+          <p id="risco">--</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Variáveis do Modelo</h2>
+      <div class="grid">
+        <div class="info">
+          <h3>Temperatura</h3>
+          <p style="font-size:0.95rem; color:#94a3b8;">Temperaturas elevadas favorecem a reprodução do <em>Aedes aegypti</em></p>
+        </div>
+        <div class="info">
+          <h3>Precipitação</h3>
+          <p style="font-size:0.95rem; color:#94a3b8;">Chuva acumula água parada — principal criadouro</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Objetivo</h2>
+      <p style="color:#cbd5e1; line-height:1.7;">
+        Apoiar órgãos públicos e profissionais de saúde na tomada de decisões preventivas,
+        identificando antecipadamente cidades com maior probabilidade de surto de dengue
+        com base em dados climáticos objetivos.
+      </p>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>Global Solution 2026.1 &nbsp;|&nbsp; FIAP &nbsp;|&nbsp; SpaceHealth</p>
+    <p style="margin-top:4px;">Giovanna Gomes Oliveira · Gabriel Coppola · Cloves Silva Filho</p>
+  </footer>
+
+  <script>
+    const dados = {
+      "sao-paulo":  { temperatura: "29°C", chuva: "20 mm", risco: "Alto"  },
+      "campinas":   { temperatura: "27°C", chuva: "15 mm", risco: "Alto"  },
+      "santos":     { temperatura: "31°C", chuva: "10 mm", risco: "Médio" },
+      "sorocaba":   { temperatura: "30°C", chuva: "12 mm", risco: "Médio" }
+    };
+
+    function preverRisco() {
+      const cidade = document.getElementById("cidade").value;
+      const d = dados[cidade];
+
+      document.getElementById("temperatura").innerText = d.temperatura;
+      document.getElementById("chuva").innerText       = d.chuva;
+      document.getElementById("risco").innerText       = d.risco;
+
+      const card = document.getElementById("card-risco");
+      card.classList.remove("risco-alto", "risco-medio", "risco-baixo");
+      if (d.risco === "Alto")  card.classList.add("risco-alto");
+      if (d.risco === "Médio") card.classList.add("risco-medio");
+      if (d.risco === "Baixo") card.classList.add("risco-baixo");
+    }
+  </script>
+
+</body>
+</html>

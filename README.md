@@ -26,22 +26,23 @@
 
 O SpaceHealth é uma solução desenvolvida para auxiliar na previsão de risco de dengue utilizando dados climáticos coletados através da API OpenWeather.
 
-O sistema integra Inteligência Artificial, Machine Learning, Banco de Dados PostgreSQL e uma interface web para análise dos dados.
+O sistema integra Inteligência Artificial, Machine Learning, Banco de Dados SQLite e uma interface web para análise dos dados.
 
-A proposta utiliza informações de temperatura, umidade e precipitação para identificar padrões associados ao aumento do risco de dengue em cidades brasileiras.
+A proposta utiliza informações de temperatura e precipitação para identificar padrões associados ao aumento do risco de dengue em cidades brasileiras.
 
 ---
 
 ## 🚀 Tecnologias Utilizadas
 
 - Python
-- PostgreSQL
+- SQLite (sqlite3)
 - Machine Learning (Scikit-Learn)
 - OpenWeather API
+- Streamlit
+- Plotly
 - HTML5
 - CSS3
 - GitHub
-- Power BI
 
 ---
 
@@ -50,12 +51,27 @@ A proposta utiliza informações de temperatura, umidade e precipitação para i
 ```text
 SpaceHealth/
 
-├── buscar_clima.py
-├── conexao.py
-├── inserir_cidade.py
-├── prever_banco.py
-├── treinar_modelo.py
-├── index.html
+├── src/
+│   ├── __init__.py
+│   ├── setup_db.py
+│   ├── dashboard.py
+│   ├── repository/
+│   │   ├── __init__.py
+│   │   ├── conexao.py
+│   │   ├── cidade_repository.py
+│   │   └── clima_repository.py
+│   ├── service/
+│   │   ├── __init__.py
+│   │   ├── clima_service.py
+│   │   ├── sensor_service.py
+│   │   └── ml_service.py
+│   └── templates/
+│       └── index.html
+├── data/
+│   ├── dataset_treino.csv
+│   └── chart.csv
+├── requirements.txt
+├── spacehealth.db
 ├── README.md
 └── docs/
     └── imagens/
@@ -66,8 +82,9 @@ SpaceHealth/
 ## ⚙️ Funcionalidades
 
 - Cadastro de cidades
-- Coleta automática de dados climáticos
-- Armazenamento em PostgreSQL
+- Coleta automática de dados climáticos via OpenWeather API
+- Simulação de sensores ESP32 (DHT22 + pluviômetro)
+- Armazenamento em SQLite (sem necessidade de servidor)
 - Treinamento do modelo de Machine Learning
 - Previsão de risco de dengue
 - Dashboard analítico
@@ -75,51 +92,11 @@ SpaceHealth/
 
 ---
 
-## 💻 Interface Web HTML
+## 📊 Dashboard Interativo (Streamlit + Plotly)
 
-<img src="docs/imagens/8%20-pagina%20html.jpeg" width="900">
+Dashboard analítico construído com Streamlit e Plotly, exibindo as leituras dos sensores, KPIs e a previsão de risco por cidade em tempo real.
 
----
-
-## 📊 Dashboard Power BI
-
-<img src="docs/imagens/1%20-%20Dashboard%20completo.png" width="900">
-
----
-
-## 🔗 Modelo de Relacionamentos
-
-<img src="docs/imagens/2%20-%20Modelo%20de%20relacionamentos.png" width="900">
-
----
-
-## 🗄️ Banco de Dados
-
-<img src="docs/imagens/3%20-%20Banco%20de%20dados.png" width="900">
-
----
-
-## 📋 Dados das Cidades
-
-<img src="docs/imagens/4%20-%20dados%20das%20cidades.png" width="900">
-
----
-
-## 🌦️ Código da API Climática
-
-<img src="docs/imagens/5%20-%20codigo%20python%20da%20API.png" width="900">
-
----
-
-## 🤖 Modelo de Machine Learning
-
-<img src="docs/imagens/6%20-%20codigo%20do%20modelo.png" width="900">
-
----
-
-## 📈 Previsão Executada
-
-<img src="docs/imagens/7%20-%20previsao%20executada.png" width="900">
+<img src="docs/imagens/dashboard_completo.png" width="900">
 
 ---
 
@@ -127,25 +104,30 @@ SpaceHealth/
 
 Banco utilizado:
 
-- PostgreSQL
+- SQLite — arquivo `spacehealth.db` gerado automaticamente, sem necessidade de servidor
 
 Tabelas principais:
 
 - cidades
 - clima
-- previsao_dengue
 
 ---
 
 ## 🤖 Machine Learning
 
-O modelo foi desenvolvido utilizando a biblioteca Scikit-Learn.
+O modelo (Random Forest, Scikit-Learn) é treinado com **dados reais**:
 
-Variáveis analisadas:
+- **Casos de dengue** — SINAN 2012–2021 (12,4 milhões de notificações), agregados por mês e filtrados por confirmação (`CLASSI_FIN`).
+- **Clima** — normais climáticas mensais do Brasil (Banco Mundial, 1991–2020): temperatura média e precipitação.
+
+As duas bases são cruzadas por mês em `data/dataset_treino.csv`. O rótulo `risco` (Alto / Medio / Baixo) é derivado do **tercil dos casos confirmados reais** — não de regra arbitrária.
+
+Variáveis de entrada do modelo:
 
 - Temperatura
-- Umidade
-- Precipitação
+- Precipitação (chuva)
+
+Observação relevante: o pico de chuva ocorre entre janeiro e março, enquanto o pico de casos vai de fevereiro a maio — defasagem de ~1 mês compatível com o ciclo de proliferação do *Aedes aegypti* após as chuvas.
 
 Objetivo:
 
@@ -153,30 +135,71 @@ Objetivo:
 
 ---
 
+## 📚 Fontes de Dados
+
+Os dados de treinamento foram extraídos de bases públicas:
+
+- **Casos de dengue (epidemiológico)** — SINAN, Brasil 2012–2021
+  <https://data.mendeley.com/datasets/2d3kr8zynf/4>
+
+- **Dados climáticos históricos** — normais mensais do Brasil 1991–2020, Banco Mundial (Climate Change Knowledge Portal)
+  <https://climateknowledgeportal.worldbank.org/country/brazil/climate-data-historical>
+
+---
+
 ## ▶️ Como Executar
+
+**Pré-requisito:** Python 3.10+
+
+Criar e ativar ambiente virtual:
+
+```bash
+python -m venv .venv
+
+# Windows
+.venv\Scripts\activate
+```
 
 Instalar dependências:
 
 ```bash
-pip install pandas scikit-learn psycopg2 requests
+pip install -r requirements.txt
 ```
 
-Executar coleta climática:
+Criar o banco de dados e tabelas (executar uma vez):
 
 ```bash
-python buscar_clima.py
+python -m src.setup_db
 ```
 
-Treinar modelo:
+Verificar conexão:
 
 ```bash
-python treinar_modelo.py
+python -m src.repository.conexao
 ```
 
-Gerar previsões:
+Iniciar simulador de sensores ESP32 (terminal separado, deixar rodando):
 
 ```bash
-python prever_banco.py
+python -m src.service.sensor_service
+```
+
+Treinar modelo e gerar previsão com dados reais (SINAN + clima Banco Mundial):
+
+```bash
+python -m src.service.ml_service
+```
+
+Executar coleta climática via OpenWeather API:
+
+```bash
+python -m src.service.clima_service
+```
+
+Iniciar o dashboard interativo (Streamlit + Plotly):
+
+```bash
+streamlit run src/dashboard.py
 ```
 
 ---
@@ -186,7 +209,7 @@ python prever_banco.py
 Adicionar o link do vídeo após o upload para o YouTube:
 
 ```text
-https://youtu.be/SEU-LINK-AQUI
+https://youtu.be/v0I4eZE6fM8
 ```
 
 ---
